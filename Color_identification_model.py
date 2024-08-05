@@ -35,26 +35,7 @@ model.fit(x_train, y_train, epochs=100)
 model.save('color_model.keras')
 
 
-loaded_model = tf.keras.models.load_model('color_model.keras')
 
 
-def predict_color(rgb_values):
-    rgb_values = np.array(rgb_values, dtype=np.float32).reshape(1, -1)
-    predictions = loaded_model.predict(rgb_values)
-    predicted_index = np.argmax(predictions)
-    return color_labels[predicted_index]
 
-#testing the model 
 
-test_colors=[
-    [255,255,255],
-    [255,255,0],
-    [0,0,255],
-    
-    [255,0,0],
-    [255,165,0],
-    [0,255,0],
-]
-
-for color in test_colors:
-     print(f"RGB values {color} are classidies as: {predict_color(color)}")
